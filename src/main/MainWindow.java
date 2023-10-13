@@ -78,6 +78,8 @@ public class MainWindow {
     }
     
     public static void update () {
+        panel.revalidate();
+        panel.repaint();
         panel.add(ayuda);
         panel.add(crearTarea);
         panel.add(verTareas);

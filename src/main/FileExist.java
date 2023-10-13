@@ -10,7 +10,6 @@ public class FileExist {
         File archivo = new File(rutaArchivo);
 
         if (archivo.exists()) {
-            return;
         } else {
             try {
                 if (archivo.createNewFile()) {

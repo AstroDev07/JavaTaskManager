@@ -1,14 +1,13 @@
 package main;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import static main.MainWindow.panel;
@@ -16,7 +15,8 @@ import static main.MainWindow.window;
 
 public class ShowTasks {
 
-    private JTextArea textArea;
+    
+    private final JTextArea textArea;
     public ShowTasks() {
         
         textArea = new JTextArea();
@@ -27,17 +27,18 @@ public class ShowTasks {
         scrollPane.setPreferredSize(new Dimension(380, 220));
 
         
-        panel.add(scrollPane, BorderLayout.CENTER);
-        panel.add(new QuitButton(panel).getButton(), BorderLayout.SOUTH);
-        readCSV("tareas.txt");
+        panel.add(scrollPane);
+        panel.add(new QuitButton(panel).getButton());
         panel.revalidate();
         panel.repaint();
         window.setVisible(true);
+        readCSV();
     }
     
 
-    public void readCSV(String filePath) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+    private void readCSV() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("tareas.txt"));
             String line;
             ArrayList<String> descriptions = new ArrayList<>();
 
@@ -52,8 +53,14 @@ public class ShowTasks {
             for (String description : descriptions) {
                 textArea.append(description + "\n\n");
             }
+            
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(window, "");
+            System.out.println("paco");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("iba a dar la excepcion");
+            File file = new File("tareas.txt");
+            file.delete();
+            new FileExist();
         }
     }
 }
