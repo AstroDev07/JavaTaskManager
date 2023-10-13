@@ -1,5 +1,5 @@
 # JavaTaskManager
-**JavaTaskManager** es un administrador de tareas GUI basado en Archivos de Texto. Tiene como objetivo facilitar la organización de los usuarios sin la necesidad de usar la interfaz gráfica.
+**JavaTaskManager** es un administrador de tareas GUI basado en Archivos de Texto. Tiene como objetivo facilitar la organización de los usuarios sin la necesidad de usar la linea de comandos.
 
 ## Ventajas
 Funciona completamente de manera local, así que tus datos seguirán siendo tuyos. Además, está desarrollado en Java, por lo que es ligero y portable.
